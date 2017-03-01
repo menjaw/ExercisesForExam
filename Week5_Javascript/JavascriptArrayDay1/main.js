@@ -22,11 +22,11 @@ console.log(all + "\n");
 
 
 console.log("Tilføjer to navne i enden af arrayet:");
-console.log(all.push("Lone,Gitte"));
+console.log(all.push("Lone", "Gitte"));
 console.log(all + "\n");
 
 console.log("Tilføjer to navne i starten af arrayet:");
-console.log(all.unshift("Hans, Kurt"));
+console.log(all.unshift("Hans", "Kurt"));
 console.log(all + "\n");
 
 //Create a comma seperated(,) string with all the names from above
@@ -39,6 +39,14 @@ var hyphenNames = all.join(" - ");
 console.log("STRING - SEPEREATE NAMES BY HYPHEN:");
 console.log(hyphenNames + "\n");
 
+
+//Remove the first name in the array
+var removeFirstElement = all.shift();
+console.log("REMOVES THE FIRST NAME IN THE ARRAY");
+console.log(removeFirstElement + "\n");
+console.log(all + "\n");
+
+//Remove the last name from the array
 
 
 
