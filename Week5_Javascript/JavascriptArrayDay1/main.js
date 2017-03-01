@@ -43,13 +43,14 @@ console.log(hyphenNames + "\n");
 //Remove the first name in the array
 var removeFirstElement = all.shift();
 console.log("REMOVES THE FIRST ELEMENT IN THE ARRAY");
-console.log(removeFirstElement + "\n");
+console.log("Removed: " + removeFirstElement);
 console.log(all + "\n");
 
 //Remove the last name from the array
 var removeLastElement = all.pop();
 console.log("REMOVES THE LAST ELEMENT IN THE ARRAY");
-console.log(removeLastElement + "\n");
+console.log("Removed: " + removeLastElement);
 console.log(all + "\n");
 
+//Remove existing elements
 
