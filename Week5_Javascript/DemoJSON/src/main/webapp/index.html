@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+     
+           <!-- var app = document.getElementById("app");
+            app.innerHTML = "Test test test";
+
+            var url = "";
+            var conf = {method: 'get'};
+            var promise = fetch(url, conf);
+            promise.then(function (response) {
+                //console.log(response);
+                return response.text();
+            }).then(function (text) {
+                console.log(text);
+            });-->
+
+        
+             <div id="app"></div>
+        <script>
+            var app = document.getElementById("app");
+            app.innerHTML = "blabalblaab";
+            var url = "http://localhost:8084/DemoJSON/PersonController";
+            var conf = {method: 'get'};
+            var promise = fetch(url, conf);
+            promise.then(function(response){
+                return response.text();
+            }).then(function(text){
+                console.log(text);
+            });
+        </script>
+    </body>
+</html>

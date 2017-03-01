@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Exercise 4</div>
+        <div id="x"></div>
+
+        <input type="Text" id="nn">
+        <button id="btn">Tilføj</button>
+
+        <script>
+            var names = ["Tove", "Hanne", "Tom", "Sigurd"];
+            function listMaker(arr) {
+                var lis = arr.map(function (name) {
+                    return "<li>" + name + "</li>";
+                });
+                var ul = "<ul>" + lis.join("") + "</ul>";
+                return ul;
+            }
+            ;
+
+            document.getElementById("x").innerHTML = listMaker(names);
+
+            var btn = document.getElementById("btn");
+            btn.addEventListener("click", function(){
+            var nn = document.getElementById("nn").value;
+            names.push(nn);
+            document.getElementById("x").innerHTML = listMaker(names);
+            });
+        </script>
+    </body>
+</html>

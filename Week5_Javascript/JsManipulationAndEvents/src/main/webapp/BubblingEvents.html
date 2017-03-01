@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .divStyle{width: 50px; height: 50px; background: #222; margin: 3px;}
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div>TODO write content</div>
+            <h3></h3>
+            <div id="d1" class="divStyle"></div>
+            <div id="d2" class="divStyle"></div>
+            <div id="d3" class="divStyle"></div>
+            <div id="d4" class="divStyle"></div>
+            <div id="d5" class="divStyle"></div>
+            <div id="d6" class="divStyle"></div>
+            <div id="d7" class="divStyle"></div>
+            <div id="d8" class="divStyle"></div>
+            <div id="d9" class="divStyle"></div>
+            <div id="d10" class="divStyle"></div>
+
+            <script>
+                var wrapper = document.getElementById("wrapper");
+                wrapper.addEventListener("click", colorFunction);
+
+                function colorFunction(evt) {
+                    var clickedDiv = evt.target;
+                    document.getElementById("h3").innerText = clickedDiv.id;
+                    
+                    /*console.log(this.id);
+                    console.log(clickedDiv.id*/
+                }
+            </script>
+        </div>
+    </body>
+</html>
