@@ -21,21 +21,25 @@ console.log("Tilføjer det ene array til det andet:");
 console.log(all + "\n");
 
 
-console.log("Tilføjer to navne i enden af arrayet:"); 
+console.log("Tilføjer to navne i enden af arrayet:");
 console.log(all.push("Lone,Gitte"));
 console.log(all + "\n");
 
-console.log("Tilføjer to navne i starten af arrayet:"); 
-console.log(all.unshift("Hans,Kurt"));
+console.log("Tilføjer to navne i starten af arrayet:");
+console.log(all.unshift("Hans, Kurt"));
 console.log(all + "\n");
 
 //Create a comma seperated(,) string with all the names from above
-var commaNames = "Peter, lars, Ole, Janne, hanne, Sanne";
+var commaNames = all.join();
 console.log("STRING - SEPEREATE NAMES BY COMMA:");
 console.log(commaNames + "\n");
 
 //Create a comma hyphen(-) string with all the names from above
-var hyphenNames = "Peter - lars - Ole - Janne - hanne - Sanne";
+var hyphenNames = all.join(" - ");
 console.log("STRING - SEPEREATE NAMES BY HYPHEN:");
 console.log(hyphenNames + "\n");
+
+
+
+
 
