@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany</groupId>
-    <artifactId>AjaxCallsJsExercise_Day3</artifactId>
+    <artifactId>AjaxCallsJsExercise1_Day3</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>AjaxCallsJsExercise_Day3</name>
+    <name>AjaxCallsJsExercise1_Day3</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
