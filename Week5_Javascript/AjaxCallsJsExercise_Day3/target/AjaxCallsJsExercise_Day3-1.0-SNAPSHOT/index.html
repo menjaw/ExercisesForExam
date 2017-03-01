@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+
+        <div id="quoteBoks"></div>
+        <button type="submit" id="btnSubmit">Submit</button>
+
+        <script>
+            var btn = document.getElementById("btnSubmit");
+            btn.addEventListener("click", function () {
+                alert("Hallo");
+                var qouteBoks = document.getElementById("quoteBoks");
+
+                
+                var url = "http://localhost:8084/AjaxCallsJsExercise_Day3/Qoute";
+                var conf = {method: 'get'};
+                var promise = fetch(url, conf);
+                promise.then(function (response) {
+                    return response.text();
+                }).then(function (text) {
+                    quoteBoks.innerHTML = text;
+                    console.log(text);
+                });
+            });
+        </script>
+    </body>
+</html>
