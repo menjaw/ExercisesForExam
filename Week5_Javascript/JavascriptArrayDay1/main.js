@@ -62,3 +62,10 @@ console.log(all);
 var reverseElements = all.reverse();
 console.log("REVERSE ELEMENTS IN THE ARRAY");
 console.log(reverseElements);
+
+//Sort the array
+var sortArray = all.sort(function (a, b) {
+    return a.toUpperCase().localeCompare(b.toUpperCase());
+});
+console.log("SORT ELEMENTS IN THE ARRAY");
+console.log(sortArray);
