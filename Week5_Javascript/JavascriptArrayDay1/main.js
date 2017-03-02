@@ -53,4 +53,7 @@ console.log("Removed: " + removeLastElement);
 console.log(all + "\n");
 
 //Remove existing elements
-
+var removeElement = all.splice(3, 2);
+console.log("REMOVES AN ELEMENT IN THE ARRAY");
+console.log("Removed: " + removeElement);
+console.log(all);
