@@ -57,3 +57,8 @@ var removeElement = all.splice(3, 2);
 console.log("REMOVES AN ELEMENT IN THE ARRAY");
 console.log("Removed: " + removeElement);
 console.log(all);
+
+//Reverse the elements in array
+var reverseElements = all.reverse();
+console.log("REVERSE ELEMENTS IN THE ARRAY");
+console.log(reverseElements);
