@@ -42,37 +42,48 @@ console.log(hyphenNames + "\n");
 
 //Remove the first name in the array
 var removeFirstElement = all.shift();
-console.log("REMOVES THE FIRST ELEMENT IN THE ARRAY");
+console.log("Removes the first element in array");
 console.log("Removed: " + removeFirstElement);
 console.log(all + "\n");
 
 //Remove the last name from the array
 var removeLastElement = all.pop();
-console.log("REMOVES THE LAST ELEMENT IN THE ARRAY");
+console.log("Removes the last element in array");
 console.log("Removed: " + removeLastElement);
 console.log(all + "\n");
 
 //Remove existing elements
 var removeElement = all.splice(3, 2);
-console.log("REMOVES AN ELEMENT IN THE ARRAY");
+console.log("Removes an element in array");
 console.log("Removed: " + removeElement);
 console.log(all + "\n");
 
 //Reverse the elements in array
 var reverseElements = all.reverse();
-console.log("REVERSE ELEMENTS IN THE ARRAY");
+console.log("Reverse the elements in array");
 console.log(reverseElements + "\n");
 
 //Sort the array
 var sortArray = all.sort(function (name1, name2) {
     return name1.toUpperCase().localeCompare(name2.toUpperCase());
 });
-console.log("SORT ELEMENTS IN THE ARRAY");
+console.log("Sort the elements in the array");
 console.log(sortArray + "\n");
 
 //Convert all the names to UpperCase
 var upperCaseArray = all.map(function (arr) {
     return arr.toUpperCase();
 });
-console.log("CONVERT ELEMENTS TO UPPERCASE IN THE ARRAY");
+console.log("Convert elements to uppercase in array");
 console.log(upperCaseArray + "\n");
+
+//Create new array containing names starting with I eller L
+var filterCallbackArray = all.filter(function (arr) {
+    if (arr === "I" || arr === "L") {
+        return ;
+    }
+});
+console.log("Create new array containing names starting with I eller L");
+console.log(filterCallbackArray + "\n");
+
+
