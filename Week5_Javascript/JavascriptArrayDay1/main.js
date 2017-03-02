@@ -56,16 +56,23 @@ console.log(all + "\n");
 var removeElement = all.splice(3, 2);
 console.log("REMOVES AN ELEMENT IN THE ARRAY");
 console.log("Removed: " + removeElement);
-console.log(all);
+console.log(all + "\n");
 
 //Reverse the elements in array
 var reverseElements = all.reverse();
 console.log("REVERSE ELEMENTS IN THE ARRAY");
-console.log(reverseElements);
+console.log(reverseElements + "\n");
 
 //Sort the array
-var sortArray = all.sort(function (a, b) {
-    return a.toUpperCase().localeCompare(b.toUpperCase());
+var sortArray = all.sort(function (name1, name2) {
+    return name1.toUpperCase().localeCompare(name2.toUpperCase());
 });
 console.log("SORT ELEMENTS IN THE ARRAY");
-console.log(sortArray);
+console.log(sortArray + "\n");
+
+//Convert all the names to UpperCase
+var upperCaseArray = all.map(function (arr) {
+    return arr.toUpperCase();
+});
+console.log("CONVERT ELEMENTS TO UPPERCASE IN THE ARRAY");
+console.log(upperCaseArray + "\n");
