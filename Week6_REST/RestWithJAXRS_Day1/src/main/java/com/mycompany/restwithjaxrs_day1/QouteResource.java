@@ -15,6 +15,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
@@ -73,13 +74,25 @@ public class QouteResource {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getHtml() {
-        Random random = new Random(quotes.hashCode());
-    
-        
+        Random random = new Random(quotes.size());
         //Get a random qoute 
         return random.toString();
     }
 
+    /**
+     *
+     * 
+     * @return 
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String postHtml(){
+        
+        return "Post method";
+    }
+    
+    
     /**
      * PUT method for updating or creating an instance of QouteResource
      *
