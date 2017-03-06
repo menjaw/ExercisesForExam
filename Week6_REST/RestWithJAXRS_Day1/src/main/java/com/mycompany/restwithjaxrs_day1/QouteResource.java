@@ -7,6 +7,8 @@ package com.mycompany.restwithjaxrs_day1;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.util.HashMap;
+import java.util.Map;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -26,9 +28,16 @@ public class QouteResource {
 
     //Creates the gson object
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    
+
     //Data hold on the server
-    
+    private static Map<Integer, String> quotes = new HashMap() {
+        {
+        put(1, "Friends are kisses blown to us by angles");
+        put(2, "Do not take life so seriously. You will never get out of it alive");
+        put(3, "Behind every great Man, is a woman rolling her eyes");
+        }
+    };
+
     @Context
     private UriInfo context;
 
@@ -39,18 +48,21 @@ public class QouteResource {
     }
 
     /**
-     * Retrieves representation of an instance of com.mycompany.restwithjaxrs_day1.QouteResource
+     * Retrieves representation of an instance of
+     * com.mycompany.restwithjaxrs_day1.QouteResource
+     *
      * @return an instance of java.lang.String
      */
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getHtml() {
         //TODO return proper representation object
-       return "Shitty shit";
+        return "Shitty shit ";
     }
 
     /**
      * PUT method for updating or creating an instance of QouteResource
+     *
      * @param content representation for the resource
      */
     @PUT
