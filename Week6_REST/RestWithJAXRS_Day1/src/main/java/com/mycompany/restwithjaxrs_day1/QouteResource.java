@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -48,17 +49,35 @@ public class QouteResource {
     }
 
     /**
+     * THIS METHOD RETURNS A QUOTE BY A GIVEN ID
+     *
      * Retrieves representation of an instance of
      * com.mycompany.restwithjaxrs_day1.QouteResource
      *
      * @return an instance of java.lang.String
-     * This method return a qoute with the given Id
+     */
+//    @GET
+//    @Produces(MediaType.TEXT_HTML)
+//    public String getHtml() {
+//        //Get the qoute by Id
+//        return quotes.get(2);
+//    }
+    /**
+     * THIS METHOD RETURNS A RANDOM QUOTE
+     *
+     * Retrieves representation of an instance of
+     * com.mycompany.restwithjaxrs_day1.QouteResource
+     *
+     * @return an instance of java.lang.String
      */
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getHtml() {
-        //Get the qoute by Id
-        return quotes.get(2);
+        Random random = new Random(quotes.hashCode());
+    
+        
+        //Get a random qoute 
+        return random.toString();
     }
 
     /**
