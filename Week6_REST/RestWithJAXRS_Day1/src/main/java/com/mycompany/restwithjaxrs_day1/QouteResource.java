@@ -5,6 +5,8 @@
  */
 package com.mycompany.restwithjaxrs_day1;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -19,9 +21,14 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Menja
  */
-@Path("api")
+@Path("quote")
 public class QouteResource {
 
+    //Creates the gson object
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    
+    //Data hold on the server
+    
     @Context
     private UriInfo context;
 
@@ -39,7 +46,7 @@ public class QouteResource {
     @Produces(MediaType.TEXT_HTML)
     public String getHtml() {
         //TODO return proper representation object
-        throw new UnsupportedOperationException();
+       return "Shitty shit";
     }
 
     /**
