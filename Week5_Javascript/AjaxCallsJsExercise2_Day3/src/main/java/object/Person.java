@@ -10,21 +10,16 @@ package object;
  * @author Menja
  */
 public class Person {
+
     private String firstname;
-    private String lastname;
-    private int age;
-    
-    
+
     //constructors
     public Person() {
     }
-    
-    public Person(String firstname, String lastname, int age) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-    }
 
+    public Person(String firstname) {
+        this.firstname = firstname;
+    }
 
     //getters and setters
     public String getFirstname() {
@@ -35,20 +30,4 @@ public class Person {
         this.firstname = firstname;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-    
 }
