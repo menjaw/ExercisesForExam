@@ -32,9 +32,9 @@ public class QouteResource {
     //Data hold on the server
     private static Map<Integer, String> quotes = new HashMap() {
         {
-        put(1, "Friends are kisses blown to us by angles");
-        put(2, "Do not take life so seriously. You will never get out of it alive");
-        put(3, "Behind every great Man, is a woman rolling her eyes");
+            put(1, "Friends are kisses blown to us by angles");
+            put(2, "Do not take life so seriously. You will never get out of it alive");
+            put(3, "Behind every great Man, is a woman rolling her eyes");
         }
     };
 
@@ -52,12 +52,13 @@ public class QouteResource {
      * com.mycompany.restwithjaxrs_day1.QouteResource
      *
      * @return an instance of java.lang.String
+     * This method return a qoute with the given Id
      */
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getHtml() {
-        //TODO return proper representation object
-        return "Shitty shit ";
+        //Get the qoute by Id
+        return quotes.get(2);
     }
 
     /**
