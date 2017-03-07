@@ -7,6 +7,8 @@ package com.mycompany.restwithjaxrs_day1;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -81,21 +83,35 @@ public class QouteResource {
     public String getRandom() {
         Random random = new Random();
         //Get a random qoute 
-        int id = random.nextInt(3)+1;
+        int id = random.nextInt(quotes.size()) + 1;
         return quotes.get(id);
     }
 
     /**
      *
      *
+     * @param quote
      * @return
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String postHtml() {
+    //@Produces(MediaType.APPLICATION_JSON)
+    public String postHtml(String quote) {
         
-        return "{\"name\":\"Post method\"}";
+        JsonParser jParser = new JsonParser();//
+        JsonObject jOb = jParser.parse(quote).getAsJsonObject();
+        String quoteValue = jOb.get("quote").getAsString();
+
+        
+        int id = quotes.size() + 1;
+        quotes.put(id, quoteValue);
+        
+        JsonObject result = new JsonObject();
+        result.addProperty("id", id);
+        result.addProperty("quote", quoteValue);
+        return gson.toJson(result);
+         
+
     }
 
     /**
