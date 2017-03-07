@@ -18,6 +18,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -25,7 +26,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Menja
  */
-@Path("quote")
+@Path("quote")//overordnet resource
 public class QouteResource {
 
     //Creates the gson object
@@ -55,14 +56,17 @@ public class QouteResource {
      * Retrieves representation of an instance of
      * com.mycompany.restwithjaxrs_day1.QouteResource
      *
+     * @param id
      * @return an instance of java.lang.String
      */
-//    @GET
-//    @Produces(MediaType.TEXT_HTML)
-//    public String getHtml() {
-//        //Get the qoute by Id
-//        return quotes.get(2);
-//    }
+    @GET
+    @Path("/id/{id}")//tuborg fortæller REST at id er en variabel
+    @Produces(MediaType.TEXT_HTML)
+    public String getHtml(@PathParam("id") int id) {
+        //Get the qoute by Id
+        return quotes.get(id);
+    }
+
     /**
      * THIS METHOD RETURNS A RANDOM QUOTE
      *
@@ -72,27 +76,28 @@ public class QouteResource {
      * @return an instance of java.lang.String
      */
     @GET
+    @Path("/random")
     @Produces(MediaType.TEXT_HTML)
-    public String getHtml() {
-        Random random = new Random(quotes.size());
+    public String getRandom() {
+        Random random = new Random();
         //Get a random qoute 
-        return random.toString();
+        int id = random.nextInt(3)+1;
+        return quotes.get(id);
     }
 
     /**
      *
-     * 
-     * @return 
+     *
+     * @return
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String postHtml(){
+    public String postHtml() {
         
-        return "Post method";
+        return "{\"name\":\"Post method\"}";
     }
-    
-    
+
     /**
      * PUT method for updating or creating an instance of QouteResource
      *

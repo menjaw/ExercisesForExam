@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
  *
  * @author Menja
  */
-@javax.ws.rs.ApplicationPath("api")
+@javax.ws.rs.ApplicationPath("api")//indgangsportallen (host:port/ /api/ressource)
 public class ApplicationConfig extends Application {
 
     @Override
