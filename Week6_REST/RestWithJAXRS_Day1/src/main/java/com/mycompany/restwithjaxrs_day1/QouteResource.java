@@ -62,7 +62,7 @@ public class QouteResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Path("/id/{id}")//tuborg fortæller REST at id er en variabel
+    @Path("/id/{id}")//tuborg-paranteser fortæller REST at id er en variabel
     @Produces(MediaType.TEXT_HTML)
     public String getHtml(@PathParam("id") int id) {
         //Get the qoute by Id
@@ -97,30 +97,33 @@ public class QouteResource {
     @Consumes(MediaType.APPLICATION_JSON)
     //@Produces(MediaType.APPLICATION_JSON)
     public String postHtml(String quote) {
-        
-        JsonParser jParser = new JsonParser();//
+        //Den modtagende streng konverteres til et JSON Objekt
+        JsonParser jParser = new JsonParser();
         JsonObject jOb = jParser.parse(quote).getAsJsonObject();
         String quoteValue = jOb.get("quote").getAsString();
 
-        
+        //Opretter et nyt id ud fra map-size og ligger 1 til det sidste element
         int id = quotes.size() + 1;
+        //Tilføjer quote til map
         quotes.put(id, quoteValue);
-        
+
         JsonObject result = new JsonObject();
         result.addProperty("id", id);
         result.addProperty("quote", quoteValue);
         return gson.toJson(result);
-         
 
     }
 
     /**
      * PUT method for updating or creating an instance of QouteResource
      *
+     * @param id
      * @param content representation for the resource
      */
     @PUT
+    @Path("/update/{id}")
     @Consumes(MediaType.TEXT_HTML)
-    public void putHtml(String content) {
+    public void putHtml(@PathParam("id") int id, String content) {
+        System.out.println("Test");
     }
 }
