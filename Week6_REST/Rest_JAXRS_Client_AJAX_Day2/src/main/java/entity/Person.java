@@ -20,9 +20,24 @@ public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String firstname;
+    private String lastname;
+    private String phone;
 
+    //Constructors
+    public Person() {
+    }
+
+    public Person(Long id, String firstname, String lastname, String phone) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+    }
+       
+    //Getters and setters
     public Long getId() {
         return id;
     }
@@ -30,8 +45,31 @@ public class Person implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }
 
 //    @Override
