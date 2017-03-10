@@ -3,17 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package scripts;
+package domain;
 
-import javax.persistence.Persistence;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Menja
  */
-public class SchemaBuilder {
-
-    public static void main(String[] args) {
-        Persistence.generateSchema("PU", null);
+public class FacadeTest {
+    
+    public FacadeTest() {
     }
+
+    @Test
+    public void testSomeMethod() {
+    }
+    
 }

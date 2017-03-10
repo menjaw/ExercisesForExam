@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -59,18 +60,15 @@ public class Facade implements IPersonFacade {
 
         Person person = em.find(Person.class, id);  //find returnerer objektet
         em.close();
-
         return person;
     }
 
     @Override
     public List<Person> getPersons() {
-        List<Person> persons = new ArrayList();
 
         EntityManager em = getEntityManager();
-
-        em.find(Person.class, persons);
-        em.close();
+        TypedQuery<Person> result = em.createNamedQuery("Person.findAll", Person.class);//returnerer hele listen med personer
+        List<Person> persons = result.getResultList();
         return persons;
     }
 
@@ -79,20 +77,24 @@ public class Facade implements IPersonFacade {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static void main(String[] args) {
 
-        Facade facade = new Facade();
-        facade.addEntityManagerFactory(Persistence.createEntityManagerFactory("PU"));
-        
-        //Sørger for at der altid er en person i databasen
-        Person p = new Person("Henriette", "Hansen", "45454545");
-        p = facade.addPerson(p);
-        System.out.println("person: " + p.getId());
-        
-        //Tager fat i en person fra DB ud fra givent id
-        Person person = facade.getPerson(4L);
-        System.out.println(person.toString());
-        
-        
-    }
+
+
+//
+//    public static void main(String[] args) {
+//
+//        Facade facade = new Facade();
+//        facade.addEntityManagerFactory(Persistence.createEntityManagerFactory("PU"));
+//        
+//        //Sørger for at der altid er en person i databasen
+//        Person p = new Person("Henriette", "Hansen", "45454545");
+//        p = facade.addPerson(p);
+//        System.out.println("person: " + p.getId());
+//        
+//        //Tager fat i en person fra DB ud fra givent id
+//        Person person = facade.getPerson(4L);
+//        System.out.println(person.toString());
+//        
+//        
+//    }
 }
