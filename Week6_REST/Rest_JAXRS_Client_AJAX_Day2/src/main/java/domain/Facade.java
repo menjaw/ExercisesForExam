@@ -1,7 +1,7 @@
 /*
 *This class obtain all the methods that a used in the PersonResource Class
 *It is the layer between the Database and the REST
-*/
+ */
 package domain;
 
 import entity.Person;
@@ -86,7 +86,22 @@ public class Facade implements IPersonFacade {
 
     @Override
     public Person editPerson(Person p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+
+        TypedQuery<Person> result = em.createNamedQuery("Person.findById", Person.class);
+        Person personToUpdate = result.setParameter("id", p.getId()).getSingleResult();
+
+        //Udfør ændringerne i databasen
+        em.getTransaction().begin();
+        //Tag fat i personToUpdate-variablen og set de forskellige værdier
+        personToUpdate.setFName(p.getFName());
+        personToUpdate.setLName(p.getLName());
+        personToUpdate.setPhone(p.getPhone());
+        em.getTransaction().commit();
+        em.close();
+
+        //Returner den opdateret person
+        return personToUpdate;
     }
 
 //

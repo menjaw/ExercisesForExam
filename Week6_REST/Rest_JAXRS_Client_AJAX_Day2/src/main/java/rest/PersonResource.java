@@ -104,4 +104,15 @@ public class PersonResource {
         facade.addPerson(person);
         return jsonString;
     }
+    
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updatePerson(String jsonString){
+        //Modtager og gemmer et Json-objekt som skal konverteres om til java
+        //Først vil jeg have fat i editPerson-metoden fra facaden og derfter konvertere den modtagende jsonString om til en Java-person
+        Person person = facade.editPerson(jsonConverter.getPersonFromJson(jsonString));
+        
+        //Konvertere java-Person om til JsonObjekt og returner
+        return jsonConverter.getJSONFromPerson(person);        
+    }
 }
