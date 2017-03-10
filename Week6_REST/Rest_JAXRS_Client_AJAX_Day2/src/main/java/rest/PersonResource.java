@@ -17,6 +17,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import utility.JSONConverter;
 
@@ -41,13 +42,33 @@ public class PersonResource {
         facade.addEntityManagerFactory(Persistence.createEntityManagerFactory("PU"));
     }
 
+    /**
+     * Recieve a List from Java and convert it to JSON
+     *
+     * @return a String whit all the persons
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getPersons() {
         //tager fat i java-listen af personer som sendes fra facaden
         List<Person> persons = facade.getPersons();
-
+        //Konverterer Java-listen om til json
         return jsonConverter.getJSONFromPerson(persons);
+    }
 
+    /**
+     * Recieves an int as id
+     *
+     * @param id
+     * @return a String with a person from a given id
+     */
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getPerson(@PathParam("id") Long id) {
+        //Tager fat i Java-personen ud fra det givne id
+        Person person = facade.getPerson(id);
+        //Konverter Java-personen til JSON
+        return jsonConverter.getJSONFromPerson(person);
     }
 }

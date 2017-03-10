@@ -1,8 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+*This class obtain all the methods that a used in the PersonResource Class
+*It is the layer between the Database and the REST
+*/
 package domain;
 
 import entity.Person;
@@ -43,7 +42,20 @@ public class Facade implements IPersonFacade {
 
     @Override
     public Person deletePerson(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+
+        //Opretter hvilken metode som vil benyttes til den kommende handling
+        TypedQuery<Person> result = em.createNamedQuery("Person.findById", Person.class); //("Name på query som benyttes", hvilken class man referer til)
+        //Tager fat i den enkelte person
+        Person person = result.setParameter("id", id).getSingleResult();
+
+        //Udfører handlingen - fjerner personen og committer til databasen - 
+        em.getTransaction().begin();
+        em.remove(person);
+        em.getTransaction().commit();
+        em.close();
+
+        return person;
     }
 
     /**
@@ -76,9 +88,6 @@ public class Facade implements IPersonFacade {
     public Person editPerson(Person p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-
 
 //
 //    public static void main(String[] args) {
