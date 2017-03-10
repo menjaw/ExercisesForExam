@@ -14,6 +14,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
@@ -48,7 +49,7 @@ public class PersonResource {
      * @return a String whit all the persons
      */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)//MediaType = Den type "tekst" som returneres
     public String getPersons() {
         //tager fat i java-listen af personer som sendes fra facaden
         List<Person> persons = facade.getPersons();
@@ -64,11 +65,19 @@ public class PersonResource {
      */
     @GET
     @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)//MediaType = Den type "tekst" som returneres
     public String getPerson(@PathParam("id") Long id) {
         //Tager fat i Java-personen ud fra det givne id
         Person person = facade.getPerson(id);
         //Konverter Java-personen til JSON
         return jsonConverter.getJSONFromPerson(person);
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.TEXT_PLAIN)//Returnerer en String med beskeden om at person er slettet
+    public String deletePerson(@PathParam("id") Long id) {
+        facade.deletePerson(id);
+        return "Person is deleted: " + id;
     }
 }
