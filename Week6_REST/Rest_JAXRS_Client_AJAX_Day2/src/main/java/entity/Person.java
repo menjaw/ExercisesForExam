@@ -30,13 +30,12 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(Long id, String firstname, String lastname, String phone) {
-        this.id = id;
+    public Person(String firstname, String lastname, String phone) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
     }
-       
+
     //Getters and setters
     public Long getId() {
         return id;
@@ -68,6 +67,11 @@ public class Person implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" + "id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", phone=" + phone + '}';
     }
 
 }
