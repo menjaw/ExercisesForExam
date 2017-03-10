@@ -16,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
@@ -73,11 +74,34 @@ public class PersonResource {
         return jsonConverter.getJSONFromPerson(person);
     }
 
+    /***
+     * Delete a person from the database 
+     * @param id
+     * @return 
+     */
+
     @DELETE
     @Path("{id}")
     @Produces(MediaType.TEXT_PLAIN)//Returnerer en String med beskeden om at person er slettet
     public String deletePerson(@PathParam("id") Long id) {
         facade.deletePerson(id);
         return "Person is deleted: " + id;
+    }
+
+    /***
+     * Add a new person to the database
+     * @param jsonString
+     * @return 
+     */
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String addPerson(String jsonString) {
+        
+        //Konverter JSON til Java-personen 
+        Person person = jsonConverter.getPersonFromJson(jsonString);
+        //Tilføjer personen til databsen
+        facade.addPerson(person);
+        return jsonString;
     }
 }
